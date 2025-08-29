@@ -58,7 +58,7 @@ pytest
 - Seat operations are **transactional** with row locks to prevent overselling.
 Assignment compliance (what’s implemented)
 
-Backend
+#Backend
 
 ✅ Registration / Login / Logout via Django auth.
 
@@ -66,13 +66,13 @@ Backend
 
 ✅ Models
 
-TravelOption: code (Travel ID), travel_type (Flight/Train/Bus), source, destination, departure_at, price, seats (available seats).
+##TravelOption: code (Travel ID), travel_type (Flight/Train/Bus), source, destination, departure_at, price, seats (available seats).
 
 Booking: booking_code, user, travel, seat_count, total, booked_at, status (Confirmed/Cancelled).
 
 ✅ Booking flow with validation:
 
-Prevents over-booking (atomic transaction + seat checks).
+##Prevents over-booking (atomic transaction + seat checks).
 
 Computes total = seat_count * price.
 
@@ -96,7 +96,7 @@ Bonus / Extras
 
 ✅ Unit tests for bookings, cancellations, and filters (see core/tests.py).
 
-URLs
+##URLs
 
 / (home), /register/, /login/, /logout/, /profile/
 
@@ -106,7 +106,7 @@ URLs
 
 /admin/ (admin)
 
-How to deploy to PythonAnywhere (quick)
+##How to deploy to PythonAnywhere (quick)
 
 Sign in → “Start a new web app” → “Manual configuration” → Python 3.x.
 
@@ -118,14 +118,14 @@ git clone https://github.com/vasavi2015/TravelBook.git
 cd TravelBook
 
 
-Create a virtualenv & install deps:
+##Create a virtualenv & install deps:
 
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
 
-Environment: create .env (use .env.example as reference).
+##Environment: create .env (use .env.example as reference).
 For first deploy, simplest is SQLite:
 
 DEBUG=False
@@ -135,14 +135,14 @@ DB_ENGINE=sqlite
 DB_NAME=db.sqlite3
 
 
-Migrate & collect static:
+##Migrate & collect static:
 
 python manage.py migrate
 python manage.py collectstatic --noinput
 python manage.py createsuperuser   # optional
 
 
-Web tab → edit WSGI config: point project path to your repo folder and ensure:
+##Web tab → edit WSGI config: point project path to your repo folder and ensure:
 
 import os, sys
 path = '/home/<your-username>/TravelBook'
@@ -153,7 +153,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'travelbook.settings')
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 
-In the Web tab, set Working directory to the repo root, and Virtualenv to /home/<user>/TravelBook/.venv.
+##In the Web tab, set Working directory to the repo root, and Virtualenv to /home/<user>/TravelBook/.venv.
 
 Static files mapping (Web tab):
 
@@ -162,9 +162,9 @@ URL: /static/ → Folder: /home/<user>/TravelBook/static/
 Reload the app (big green button).
 Your URL will be: https://<your-username>.pythonanywhere.com
 
-Using MySQL on PythonAnywhere (bonus):
+##Using MySQL on PythonAnywhere (bonus):
 
-Create a MySQL database from the “Databases” tab.
+##Create a MySQL database from the “Databases” tab.
 
 Put the DB credentials in .env:
 
