@@ -56,3 +56,126 @@ pytest
 ## Security & Validation
 - Password validators enabled; CSRF protection and server-side seat checks.
 - Seat operations are **transactional** with row locks to prevent overselling.
+Assignment compliance (what’s implemented)
+
+Backend
+
+✅ Registration / Login / Logout via Django auth.
+
+✅ Profile update page for name/email/password (see /profile/).
+
+✅ Models
+
+TravelOption: code (Travel ID), travel_type (Flight/Train/Bus), source, destination, departure_at, price, seats (available seats).
+
+Booking: booking_code, user, travel, seat_count, total, booked_at, status (Confirmed/Cancelled).
+
+✅ Booking flow with validation:
+
+Prevents over-booking (atomic transaction + seat checks).
+
+Computes total = seat_count * price.
+
+✅ Manage bookings:
+
+“My bookings” page with current & past bookings.
+
+Cancel booking (returns seats back to inventory).
+
+Frontend
+
+✅ Templates for home, register/login, profile, travel list (with filters & search), booking form, and bookings list.
+
+✅ Responsive UI via Bootstrap 5 (+ static/css/travelbook.css).
+
+Bonus / Extras
+
+✅ Filters & search: by type, source, destination, date, and free-text.
+
+✅ MySQL ready (see .env instructions).
+
+✅ Unit tests for bookings, cancellations, and filters (see core/tests.py).
+
+URLs
+
+/ (home), /register/, /login/, /logout/, /profile/
+
+/travels/ (list + filters), /travels/<pk>/ (detail + booking form)
+
+/bookings/ (list), /bookings/<pk>/cancel/ (cancel)
+
+/admin/ (admin)
+
+How to deploy to PythonAnywhere (quick)
+
+Sign in → “Start a new web app” → “Manual configuration” → Python 3.x.
+
+On the Consoles tab: start a Bash console.
+
+Clone your repo:
+
+git clone https://github.com/vasavi2015/TravelBook.git
+cd TravelBook
+
+
+Create a virtualenv & install deps:
+
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+
+Environment: create .env (use .env.example as reference).
+For first deploy, simplest is SQLite:
+
+DEBUG=False
+SECRET_KEY=<generate_a_strong_value>
+ALLOWED_HOSTS=<your-username>.pythonanywhere.com
+DB_ENGINE=sqlite
+DB_NAME=db.sqlite3
+
+
+Migrate & collect static:
+
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py createsuperuser   # optional
+
+
+Web tab → edit WSGI config: point project path to your repo folder and ensure:
+
+import os, sys
+path = '/home/<your-username>/TravelBook'
+if path not in sys.path: sys.path.append(path)
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'travelbook.settings')
+
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+
+In the Web tab, set Working directory to the repo root, and Virtualenv to /home/<user>/TravelBook/.venv.
+
+Static files mapping (Web tab):
+
+URL: /static/ → Folder: /home/<user>/TravelBook/static/
+
+Reload the app (big green button).
+Your URL will be: https://<your-username>.pythonanywhere.com
+
+Using MySQL on PythonAnywhere (bonus):
+
+Create a MySQL database from the “Databases” tab.
+
+Put the DB credentials in .env:
+
+DB_ENGINE=mysql
+DB_NAME=<pa-username>$<db-name>
+DB_USER=<pa-username>
+DB_PASSWORD=<your-db-password>
+DB_HOST=<pa-username>.mysql.pythonanywhere-services.com
+DB_PORT=3306
+
+
+pip install mysqlclient (already in requirements if you added it).
+
+Run python manage.py migrate.
