@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+{% block title %}Create account · TravelBook{% endblock %}
+{% block content %}
+<h2>Create account</h2>
+<form method="post" class="card">
+  {% csrf_token %}
+  {{ form.non_field_errors }}
+  <div class="field">{{ form.username.label_tag }} {{ form.username }}</div>
+  <div class="field">{{ form.password1.label_tag }} {{ form.password1 }}</div>
+  <div class="field">{{ form.password2.label_tag }} {{ form.password2 }}</div>
+  <button class="btn btn-primary" type="submit">Register</button>
+</form>
+{% endblock %}

@@ -1,0 +1,5 @@
+Django>=5.0,<5.3
+PyMySQL>=1.1
+pytest>=8.0
+pytest-django>=4.8
+python-dotenv>=1.0

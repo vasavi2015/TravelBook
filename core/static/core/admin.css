@@ -1,0 +1,51 @@
+/* Make admin header look like your main dark navbar */
+#header {
+  background: #1f1f1f;               /* same as your main navbar */
+  border-bottom: 1px solid #111;
+}
+#header #site-name a,
+#user-tools, #user-tools a {
+  color: #fff !important;
+}
+
+/* Buttons in admin to match your black primary button */
+.button, .button.default, input[type="submit"].default,
+.submit-row input[type="submit"], .button[type="submit"] {
+  background: #1f1f1f !important;
+  border-color: #1f1f1f !important;
+  color: #fff !important;
+}
+.button:hover, .button.default:hover,
+input[type="submit"].default:hover {
+  filter: brightness(1.08);
+}
+
+/* Table/module headers to match brand */
+.module h2, .module caption {
+  background: #1f1f1f;
+  color: #fff;
+}
+
+/* Links use your brand color (adjust if you prefer) */
+a, a:link, a:visited {
+  color: #1f1f1f;
+}
+a:hover { text-decoration: underline; }
+
+/* Login page card tweaks so it resembles your site’s auth cards */
+.login #content {
+  max-width: 420px;
+}
+.login .submit-row input {
+  width: 100%;
+}
+
+/* Optional: soft page background like your site */
+body {
+  background: #f7f7f8;
+}
+
+/* Keep messages styled like the site */
+ul.messagelist li {
+  border-radius: 8px;
+}

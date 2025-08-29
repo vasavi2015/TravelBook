@@ -1,0 +1,41 @@
+[
+  {
+    "model": "core.traveloption",
+    "pk": 1,
+    "fields": {
+      "travel_id": "FL1001",
+      "type": "FLIGHT",
+      "source": "Hyderabad",
+      "destination": "Mumbai",
+      "departure_at": "2030-12-31T10:00:00Z",
+      "price": "7500.00",
+      "available_seats": 50
+    }
+  },
+  {
+    "model": "core.traveloption",
+    "pk": 2,
+    "fields": {
+      "travel_id": "TR2001",
+      "type": "TRAIN",
+      "source": "Visakhapatnam",
+      "destination": "Chennai",
+      "departure_at": "2030-12-30T06:30:00Z",
+      "price": "1200.00",
+      "available_seats": 120
+    }
+  },
+  {
+    "model": "core.traveloption",
+    "pk": 3,
+    "fields": {
+      "travel_id": "BS3001",
+      "type": "BUS",
+      "source": "Bengaluru",
+      "destination": "Mysuru",
+      "departure_at": "2030-12-28T18:45:00Z",
+      "price": "450.00",
+      "available_seats": 30
+    }
+  }
+]

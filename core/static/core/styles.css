@@ -1,0 +1,30 @@
+:root{
+  --tb-primary:#0d6efd;
+  --tb-radius: 1rem;
+}
+.navbar { backdrop-filter: saturate(120%) blur(2px); }
+.card { border-radius: var(--tb-radius); }
+.btn, .form-control, .form-select { border-radius: .6rem; }
+.table thead th { position: sticky; top: 0; background: var(--bs-body-bg); z-index: 1; }
+.table-hover tbody tr:hover { background-color: rgba(13,110,253,.06); }
+.badge-rounded { border-radius: 999px; }
+.hero {
+  padding: clamp(2rem, 4vw, 4rem) 0;
+  text-align: center;
+}
+.hero h1 { font-weight: 800; letter-spacing: .2px; }
+.input-icon {
+  position: relative;
+}
+.input-icon > i {
+  position: absolute; left: .75rem; top: 50%; transform: translateY(-50%);
+  pointer-events: none; opacity: .6;
+}
+.input-icon > input, .input-icon > select {
+  padding-left: 2.2rem;
+}
+.empty-state {
+  border: 2px dashed var(--bs-border-color);
+  border-radius: var(--tb-radius);
+  padding: 2rem; text-align: center; color: var(--bs-secondary-color);
+}

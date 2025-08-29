@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="text-center">
+  <h1>Welcome to TravelBook</h1>
+  <p class="lead">Book your Flights, Trains, and Buses easily.</p>
+
+  {% if user.is_authenticated %}
+    <a class="btn btn-primary" href="{% url 'travel_list' %}">Browse Travel Options</a>
+  {% else %}
+    <a class="btn btn-success" href="{% url 'login' %}">Login</a>
+    <a class="btn btn-outline-primary" href="{% url 'register' %}">Register</a>
+  {% endif %}
+</div>
+{% endblock %}
